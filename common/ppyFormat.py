@@ -1,7 +1,6 @@
 def verticalSplit(data, scema):
-    print(data)
     new_entries = []
-    entries = data.split(b"\n")
+    entries = data.rstrip().split(b"\n")
     for entry in entries:
         values = entry.split(b"|")
         new_entry = {}
