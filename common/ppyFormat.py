@@ -5,15 +5,14 @@ def verticalSplit(data, scema):
         new_entries = []
         entries = data.split(b"\n")
         for entry in entries:
-            values = entry.split(b"|")
-            new_entry = {}
-            for i in range(0, len(values)):
-                new_entry[scema[i]] = values[i].decode("utf-8")
-            new_entries.append(new_entry)
+            new_entries.append(_makeEntry(entry, scema))
         return new_entries
     else:
-        values = data.split(b"|")
-        entry = {}
-        for i in range(0, len(values)):
-            entry[scema[i]] = values[i].decode("utf-8")
-        return entry
+        return _makeEntry(data, scema)
+
+def _makeEntry(data, scema):
+    values = data.split(b"|")
+    entry = {key: None for key in scema}
+    for i in range(0, len(scema)):
+        entry[scema[i]] = values[i]
+    return entry
