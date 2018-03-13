@@ -9,6 +9,9 @@ def handle(request):
         data = ppyFormat.verticalSplit(ppy_str, ["res", "body_hash", "header_hash"])
         if len(data["body_hash"]) + len(data["header_hash"]) == 0:
             data = None
+        else:
+            data["body_hash"] = data["body_hash"].lower()
+            data["header_hash"] = data["header_hash"].lower()
     else:
         data = None
     return jsonify(data)
