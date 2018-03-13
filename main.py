@@ -3,14 +3,14 @@ import json
 from flask import Flask, jsonify
 import glob
 
-app = Flask(__name__)
+glob.app = Flask(__name__)
 
 with open("config.json", "r") as f:
     glob.config = json.load(f)
 
-@app.errorhandler(403)
-@app.errorhandler(404)
-@app.errorhandler(500)
+@glob.app.errorhandler(403)
+@glob.app.errorhandler(404)
+@glob.app.errorhandler(500)
 def error_handle(error):
     error_message = None
     if error.code == 500:
@@ -31,4 +31,4 @@ def error_handle(error):
     return jsonify(res)
 
 if __name__ == "__main__":
-    app.run(**glob.config["web"])
+    glob.app.run(**glob.config["web"])

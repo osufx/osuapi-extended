@@ -1,1 +1,2 @@
 config = None
+app = None
