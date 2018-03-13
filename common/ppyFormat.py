@@ -14,5 +14,8 @@ def _makeEntry(data, scema):
     values = data.split(b"|")
     entry = {key: None for key in scema}
     for i in range(0, len(scema)):
+        if scema[i].startswith("_"):
+            del entry[scema[i]]
+            continue
         entry[scema[i]] = values[i]
     return entry
