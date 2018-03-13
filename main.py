@@ -31,4 +31,7 @@ def error_handle(error):
     return jsonify(res)
 
 if __name__ == "__main__":
+    # Import flask entries (API calls etc.)
+    import entries
+    # Start app
     glob.app.run(**glob.config["web"])
