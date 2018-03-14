@@ -1,9 +1,10 @@
 {
-    "web": {
-      "debug": true,
-      "use_reloader": true,
-      "threaded": true,
-      "host": "127.0.0.1",
-      "port": 3012
-    }
+  "api-key": "*your-osu-api-key-here*",
+  "web": {
+    "debug": true,
+    "use_reloader": false,
+    "threaded": true,
+    "host": "127.0.0.1",
+    "port": 3012
+  }
 }

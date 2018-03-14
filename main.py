@@ -31,6 +31,15 @@ def error_handle(error):
     return jsonify(res)
 
 if __name__ == "__main__":
+    # Check if we have an api-key set
+    if len(glob.config["api-key"]) != 40:
+        print(
+            """
+            You do not have a valid api-key set!
+            Calls that uses the official osu api to extend will not function!
+            You can generate an api key via http://osu.ppy.sh/p/api
+            """
+        )
     # Import flask entries (API calls etc.)
     import entries
     # Start app
