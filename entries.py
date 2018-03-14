@@ -6,7 +6,7 @@ from api import hash as apiHash
 @glob.app.route("/")
 @glob.app.route("/api")
 def index():
-    return redirect("http://github.com/osufx/osuapi-extended")
+    return redirect("http://github.com/osufx/osuapi-extended/wiki")
 
 @glob.app.route("/api/getDifficulty", methods=["GET", "POST"])
 def getDiff():
