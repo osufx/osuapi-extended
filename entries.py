@@ -1,11 +1,14 @@
-from flask import request, redirect, jsonify
+from flask import request, redirect, jsonify, url_for
 import glob
 from api import difficulty
 from api import hash as apiHash
 
 @glob.app.route("/")
-@glob.app.route("/api")
 def index():
+    return jsonify(AvailableRoutes=[url_for(url.endpoint) for url in glob.app.url_map.iter_rules() if url.endpoint is not "static"])
+
+@glob.app.route("/api")
+def wiki():
     return redirect("http://github.com/osufx/osuapi-extended/wiki")
 
 @glob.app.route("/api/getDifficulty", methods=["GET", "POST"])
