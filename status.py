@@ -44,6 +44,8 @@ def update(*args, ext = 0, api = 0):
         glob.last_osu_api_calls = 0
     
     if time_diff > 0:
+        glob.minute_ext_api_calls = 0
+        glob.minute_osu_api_calls = 0
         last_update = current_time()
     
     glob.total_ext_api_calls += ext
