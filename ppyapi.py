@@ -15,5 +15,5 @@ def call_api(endpoint, **kwargs):
 
     # Update status for api calls
     status.update(api = 1)
-    
-    return json.loads(ppy_data.read())
+
+    return json.loads(ppy_data.read().decode("utf-8"))
