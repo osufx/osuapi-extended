@@ -1,6 +1,7 @@
 import urllib.request
 from common import ppyFormat
 from common.jsonFlaskFormat import jsonify
+import status
 
 def handle(request):
     ppy_data = urllib.request.urlopen('http://osu.ppy.sh/web/osu-gethashes.php?s={}'.format(request.args.get("s")))
@@ -14,4 +15,8 @@ def handle(request):
             data["header_hash"] = data["header_hash"].lower()
     else:
         data = None
+
+    # Update status for api calls
+    status.update(ext = 1)
+    
     return jsonify(data)

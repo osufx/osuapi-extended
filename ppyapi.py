@@ -1,6 +1,7 @@
 import urllib.request
 import json
 import glob
+import status
 
 def call_api(endpoint, **kwargs):
     query = "?k={}".format(glob.config["api-key"])
@@ -11,4 +12,8 @@ def call_api(endpoint, **kwargs):
         query += "&" + "&".join(args)
     endcall = endpoint + query
     ppy_data = urllib.request.urlopen('http://osu.ppy.sh/api/{}'.format(endcall))
+
+    # Update status for api calls
+    status.update(api = 1)
+    
     return json.loads(ppy_data.read())

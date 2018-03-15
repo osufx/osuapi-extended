@@ -4,6 +4,7 @@ from common import ppyFormat
 from common.jsonFlaskFormat import jsonify
 from common.utils import AddListsUnique
 import ppyapi as api
+import status
 
 def handle(request):
     checksum = request.args.getlist("c")
@@ -28,4 +29,8 @@ def handle(request):
     if len(ppy_str) <= 0:
         return jsonify(None)
     data = ppyFormat.verticalSplit(ppy_str, ["checksum", "mode", "mods", "diff_unified"])
+
+    # Update status for api calls
+    status.update(ext = 1)
+    
     return jsonify(data)
