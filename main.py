@@ -2,6 +2,7 @@ import traceback
 import json
 from flask import Flask, jsonify
 import glob
+import status
 
 glob.app = Flask(__name__)
 
@@ -40,6 +41,8 @@ if __name__ == "__main__":
             You can generate an api key via http://osu.ppy.sh/p/api
             """
         )
+    # Setup status variables
+    status.start()
     # Import flask entries (API calls etc.)
     import entries
     # Start app

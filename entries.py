@@ -2,6 +2,7 @@ from flask import request, redirect, jsonify, url_for
 import glob
 from api import difficulty
 from api import hash as apiHash
+import status
 
 @glob.app.route("/")
 def index():
@@ -18,3 +19,7 @@ def getDiff():
 @glob.app.route("/api/getHash", methods=["GET", "POST"])
 def getHash():
     return apiHash.handle(request)
+
+@glob.app.route("/stat")
+def getStatus():
+    return status.handle()
